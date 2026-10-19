@@ -32,12 +32,10 @@ export const createProject = async (req, res) => {
         (member) => member.userId === userId && member.role === "ADMIN",
       )
     ) {
-      return res
-        .status(403)
-        .json({
-          message:
-            "You don't have permission to create projects in this workspace",
-        });
+      return res.status(403).json({
+        message:
+          "You don't have permission to create projects in this workspace",
+      });
     }
 
     // Get Team Lead using email
@@ -137,12 +135,10 @@ export const updateProject = async (req, res) => {
       if (!project) {
         return res.status(404).json({ message: "Project not found" });
       } else if (project.team_lead !== userId) {
-        return res
-          .status(403)
-          .json({
-            message:
-              "You don't have permission to update projects in this workspace",
-          });
+        return res.status(403).json({
+          message:
+            "You don't have permission to update projects in this workspace",
+        });
       }
     }
 
