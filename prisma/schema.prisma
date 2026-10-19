@@ -144,3 +144,20 @@ model Comment {
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
     task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
 }
+
+enum AdminRole {
+    SUPER_ADMIN
+    ADMIN
+    SUPPORT
+}
+
+model Admin {
+    id          String    @id @default(uuid())
+    clerkUserId String    @unique
+    email       String    @unique
+    name        String
+    role        AdminRole @default(ADMIN)
+    isActive    Boolean   @default(true)
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+}
