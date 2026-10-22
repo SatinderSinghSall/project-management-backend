@@ -491,3 +491,11 @@ export const deleteAdminRecord = async (req, res) => {
     return handleDatabaseError(res, error);
   }
 };
+
+export const verifyAdminAccess = (req, res) => {
+  return res.status(200).json({
+    success: true,
+    authorized: true,
+    message: "Admin access verified",
+  });
+};
